@@ -1,6 +1,6 @@
 #  TODO
 # rake tasks. Only one (db:populate?, plus 2 from Limerick? (validate_models and indices:missing?))
-# populate (move to plugin)
+# bootstrap (move to plugin)
 # 
 # form_builder
 # testdb
