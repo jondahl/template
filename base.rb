@@ -17,15 +17,38 @@ run 'rm public/index.html'
 run 'rm public/favicon.ico'
 run 'rm public/images/rails.png'
 
-plugin 'make_resourceful', :git => 'git://github.com/hcatlin/make_resourceful.git'
+# Remove Prototype
+run 'rm public/javascripts/prototype.js'
+run 'rm public/javascripts/controls.js'
+run 'rm public/javascripts/dragdrop.js'
+run 'rm public/javascripts/effects.js'
+
+# Plugins
+plugin 'inherited_resources', :git => 'git://github.com/josevalim/inherited_resources.git'
 plugin 'annotate_models', :git => 'git://github.com/ctran/annotate_models.git'
-plugin 'inaccessible_attributes', :git => 'git://github.com/jondahl/inaccessible_attributes.git'
-plugin 'redhillonrails', :git => 'git://github.com/harukizaemon/redhillonrails_core.git'
-plugin 'schema_validations', :git => 'git://github.com/harukizaemon/schema_validations.git'
 plugin 'xss_terminate', :git => 'git://github.com/look/xss_terminate.git'
 plugin 'test_benchmark', :git => 'git://github.com/timocratic/test_benchmark.git'
+plugin 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git'
+plugin 'foreigner', :git => 'git://github.com/matthuhiggins/foreigner.git'
+plugin 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git' if yes?('Add authentication? (y/n)')
+plugin 'parallel_specs', :git => 'git://github.com/grosser/parallel_specs.git'
+plugin 'formastic', :git => 'git://github.com/justinfrench/formtastic.git'
+plugin 'rails_datatables', :git => 'git://github.com/phronos/rails_datatables.git'
+plugin 'inaction_mailer', :git => 'git://github.com/cwninja/inaction_mailer.git'
+plugin 'hoptoad', :git => 'git://github.com/thoughtbot/hoptoad_notifier.git'
+plugin 'inaccessible_attributes', :git => 'git://github.com/jondahl/inaccessible_attributes.git'
 
+if yes?("Use PaperClip? (y/n)")
+  plugin 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+end
+
+if yes?("Use PostgreSQL? (y/n)")
+  plugin 'schema_validations', :git => 'git://github.com/harukizaemon/schema_validations.git'
+end
+
+# Gems
 gem "Roman2K-rails-test-serving", :lib => "rails_test_serving"
+gem "ar_mailer", :source => "http://gemcutter.org"
 
 if yes?('Shoulda testing stack? (y/n)')
   gem 'mocha'
@@ -33,13 +56,7 @@ if yes?('Shoulda testing stack? (y/n)')
   gem 'thoughtbot-shoulda', :lib => 'shoulda'
 end
 
-if yes?('Add authentication? (y/n)')
-  gem 'authlogic'
-end
-
 if yes?('Add Cucumber stack? (y/n)')
-  gem "rspec"
-  gem "rspec-rails"
   gem "webrat"
   gem "cucumber"
 end
